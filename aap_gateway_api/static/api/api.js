@@ -12,7 +12,7 @@ $(function() {
 
   // Make links from relative URLs to resources.
   $('span.str').each(function() {
-    var s = $(this).html();
+    const s = $(this).html();
     if (s.match(/^\"\/.+\/\"$/) || s.match(/^\"\/.+\/\?.*\"$/)) {
       $(this).html('"<a href=' + s + '>' + s.replaceAll('"', '') + '</a>"');
     }
@@ -27,11 +27,11 @@ $(function() {
     }).each(function() {
       $(this).nextUntil('span.pun:contains("]")').filter('span.str').each(function() {
         if ($(this).text().match(/^\".+\"$/)) {
-          var s = $(this).text().replaceAll('"', '');
+          const s = $(this).text().replaceAll('"', '');
           $(this).html('"<a href="' + '?host=' + s + '">' + s + '</a>"');
         }
         else if ($(this).text() !== '"') {
-          var s = $(this).text();
+          const s = $(this).text();
           $(this).html('<a href="' + '?host=' + s + '">' + s + '</a>');
         }
       });
